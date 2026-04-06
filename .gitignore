@@ -1,0 +1,28 @@
+# --- C++ / Build ---
+build/
+bin/
+out/
+*.exe
+*.o
+*.obj
+
+# --- Python / Virtual Env ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+
+# --- IDE (VS Code) ---
+.vscode/
+.history/
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- random files ---
+*.xlsx
+Command stuff.txt
