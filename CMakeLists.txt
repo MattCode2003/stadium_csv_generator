@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(stadium 
     src/main.cpp
     src/loading_data.cpp
+    src/bucs.cpp
 )
 
 # 2. APPLY settings to the target (Must use 'stadium' lowercase to match)

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
+#include "../include/bucs.hpp"
 //#include <OpenXLSX.hpp>
-#include "../include/loading_data.hpp"
 
 int main();
 void main_menu();
@@ -24,7 +24,7 @@ int main()
         {
             case 1:
             {
-                std::cout << "dsifohdioshg";
+                bucs_menu();
             }
             break;
             
@@ -41,9 +41,9 @@ int main()
             }
         }
     }
-    load_universities("data/uni_codes.csv");
+    // load_universities("data/uni_codes.csv");
 
-    std::cout << uni_lookup["Oxford"].code << "\n";
+    // std::cout << uni_lookup["Oxford"].code << "\n";
 }
 
 
