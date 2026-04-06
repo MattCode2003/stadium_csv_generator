@@ -26,3 +26,7 @@ Thumbs.db
 # --- random files ---
 *.xlsx
 Command stuff.txt
+
+# --- resourses folder
+resources/*
+!resources/excel_decryption.py
