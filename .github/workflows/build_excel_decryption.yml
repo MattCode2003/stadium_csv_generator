@@ -32,11 +32,11 @@ jobs:
         run: |
           # We use different names so you can tell them apart later
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            pyinstaller --onefile --noconsole --name excel_unlocker_win resources/excel_decryption.py
+            pyinstaller --onefile --noconsole --name excel_decryption_win resources/excel_decryption.py
           elif [ "${{ matrix.os }}" = "macos-latest" ]; then
-            pyinstaller --onefile --name excel_unlocker_mac resources/excel_decryption.py
+            pyinstaller --onefile --name excel_decryption_mac resources/excel_decryption.py
           else
-            pyinstaller --onefile --name excel_unlocker_linux resources/excel_decryption.py
+            pyinstaller --onefile --name excel_decryption_linux resources/excel_decryption.py
           fi
 
       - name: Upload Finished Binaries
