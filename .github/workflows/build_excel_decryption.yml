@@ -1,0 +1,46 @@
+name: Build Excel Decryption Python
+
+on: 
+  push:
+    branches: [ main ] # Runs every time you push to the main branch
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # This spins up 3 different virtual machines simultaneously
+        os: [windows-latest, ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.3'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install msoffcrypto-tool pyinstaller
+
+      - name: Run PyInstaller
+        shell: bash
+        run: |
+          # We use different names so you can tell them apart later
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            pyinstaller --onefile --noconsole --name excel_unlocker_win resources/excel_decryption.py
+          elif [ "${{ matrix.os }}" = "macos-latest" ]; then
+            pyinstaller --onefile --name excel_unlocker_mac resources/excel_decryption.py
+          else
+            pyinstaller --onefile --name excel_unlocker_linux resources/excel_decryption.py
+          fi
+
+      - name: Upload Finished Binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: helper-${{ matrix.os }}
+          path: dist/excel_decryption_*
