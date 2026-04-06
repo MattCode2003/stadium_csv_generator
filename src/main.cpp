@@ -41,7 +41,6 @@ int main()
             }
         }
     }
-    main_menu();
     load_universities("data/uni_codes.csv");
 
     std::cout << uni_lookup["Oxford"].code << "\n";
