@@ -1,10 +1,8 @@
 #include <iostream>
 #include <string>
 #include "../include/bucs.hpp"
-//#include <OpenXLSX.hpp>
 
 int main();
-void main_menu();
 
 
 // Deals with main menu user inputs
@@ -14,10 +12,20 @@ int main()
 
     while (user_selection != 3)
     {
-        main_menu();
+        std::cout << "\n==============================\n";
+        std::cout << "      Create Stadium CSV        \n";
+        std::cout << "==============================\n";
+        std::cout << "1. BUCS Induviduals\n";
+        std::cout << "2. TTE Event\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Selection: ";
+        
         if (!(std::cin >> user_selection))
         {
-            std::cout << "\nInvalid input. Please enter a number between 1 and 3\n";
+            std::cout << "\n[Error] Please enter a valid number\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
 
         switch (user_selection)
@@ -30,31 +38,20 @@ int main()
             
             case 2:
             {
-                std::cout << "dsifohdioshg";
+                std::cout << "Not Implemented";
             }
             break;
+
+            case 3:
+                {
+                    return 0;
+                }
             
             default:
             {
-                std::cout << "\n";
+                std::cout << "\nChoice " << user_selection << " is not a valid choice";
                 break;
             }
         }
     }
-    // load_universities("data/uni_codes.csv");
-
-    // std::cout << uni_lookup["Oxford"].code << "\n";
-}
-
-
-
-void main_menu()
-{
-    std::cout << "\n==============================\n";
-    std::cout << "      Create Stadium CSV        \n";
-    std::cout << "==============================\n";
-    std::cout << "1. BUCS Induviduals\n";
-    std::cout << "2. TTE Event\n";
-    std::cout << "3. Exit\n";
-    std::cout << "Selection: ";
 }

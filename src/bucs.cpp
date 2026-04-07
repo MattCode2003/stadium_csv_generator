@@ -17,27 +17,28 @@ void bucs_menu()
 
         if (!(std::cin >> user_selection))
         {
-            std::cout << "\nInvalid input. Please enter a number between 1 and 3\n";
+            std::cout << "\n[Error] Please enter a valid number\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
 
         switch (user_selection)
         {
             case 1:
-            {
                 std::cout << "you chose 1";
-            }
-            break;
+                break;
             
             case 2:
-            {
                 std::cout << "you chose 2";
-            }
-            break;
+                break;
+
+            case 3:
+                return;
             
             default:
-            {
-                return;
-            }
+                std::cout << "\nChoice" << user_selection << "is not a valid choice";
+                break;
         }
     }
 }
