@@ -37,7 +37,7 @@ void bucs_menu()
                 return;
             
             default:
-                std::cout << "\nChoice" << user_selection << "is not a valid choice";
+                std::cout << "\nChoice " << user_selection << " is not a valid choice";
                 break;
         }
     }
