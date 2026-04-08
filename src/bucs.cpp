@@ -1,5 +1,10 @@
+#include "bucs.hpp"
 #include <iostream>
+#include "../include/loading_data.hpp"
+#include <nfd.hpp>
 
+
+// menu
 void bucs_menu()
 {
     int user_selection = 0;
@@ -26,12 +31,15 @@ void bucs_menu()
         switch (user_selection)
         {
             case 1:
-                std::cout << "you chose 1";
+                std::cout << "NOT Implemented";
                 break;
             
             case 2:
-                std::cout << "you chose 2";
+            {
+                std::string file_path = pick_file();
+                std::cout << file_path;
                 break;
+            }
 
             case 3:
                 return;
@@ -41,4 +49,26 @@ void bucs_menu()
                 break;
         }
     }
+}
+
+
+// Opens gui to get file path of selected
+std::string pick_file()
+{
+    NFD::Init();
+    NFD::UniquePath out_path;
+    nfdfilteritem_t filter_item[1] = { {"Excel Files", "xlsx"} };
+
+    nfdresult_t result = NFD::OpenDialog(out_path, filter_item, 1);
+
+    if (result == NFD_OKAY)
+    {
+        std::string path = out_path.get();
+        NFD::Quit();
+        return path;
+    }
+
+    NFD::Quit();
+    return "";
+
 }

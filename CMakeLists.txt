@@ -16,4 +16,8 @@ target_include_directories(stadium PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # 3. LINK libraries
 find_package(OpenXLSX REQUIRED)
-target_link_libraries(stadium PRIVATE OpenXLSX::OpenXLSX)
+find_package(nfd REQUIRED)
+target_link_libraries(stadium 
+    PRIVATE
+    OpenXLSX::OpenXLSX
+    nfd::nfd)
